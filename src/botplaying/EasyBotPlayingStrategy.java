@@ -4,6 +4,7 @@ import models.Cell;
 import models.CellState;
 
 public class EasyBotPlayingStrategy implements BotPlayingStrategy {
+    //updating
     @Override
     public Cell suggestMove(Board board) {
         int n = board.getSize();
