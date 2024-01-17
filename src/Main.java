@@ -2,8 +2,10 @@ import controllers.GameController;
 import controllers.PlayerController;
 import models.DifficultyLevel;
 import models.Game;
-import models.HumanPlayer;
 import models.Player;
+import strategies.winning.ColumnWinningStrategy;
+import strategies.winning.CornerWinningStrategy;
+import strategies.winning.RowWinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +57,19 @@ public class Main {
 
         }
 
-        Game game = GameController.initiateGame(dimension, players, List.of());
+        Game game = GameController.initiateGame(dimension,
+                players,
+                List.of(new RowWinningStrategy(), new ColumnWinningStrategy(),
+                       new CornerWinningStrategy()));
+
+        System.out.println("Are you ready to start the Game? (Y/N):");
+
+        if(sc.next().equals("Y")) {
+            GameController gc = new GameController(game);
+            gc. startGame();
+        }
+
+        System.out.println(" -Game Ended-");
 
     }
 }

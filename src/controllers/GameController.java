@@ -3,26 +3,24 @@ package controllers;
 import models.Game;
 import models.GameState;
 import models.Player;
+import services.GameServices;
 import strategies.winning.WinningStrategy;
 
 import java.util.List;
 
 public class GameController {
     Game game;
+    GameServices gameServices;
     public GameController(Game game) {
         this.game = game;
+        this.gameServices = new GameServices(game);
     }
     public static Game initiateGame(int dimension, List<Player> players,
                                     List<WinningStrategy> winningStrategies) {
         return new Game(dimension, players, winningStrategies);
     }
     public void startGame() {
-    game.setGameState(GameState.INIT);
-    //While there is space in the board
-        //Print-out which player move it is
-        //get the player and call the next move
-        //Display the board
-        //Iterate over all the winning strategy to check if the player has won
-        //Update the next player index
+        game.setGameState(GameState.INIT);
+        gameServices.executeNextMoves();
     }
 }

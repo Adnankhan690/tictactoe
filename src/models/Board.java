@@ -29,10 +29,10 @@ public class Board {
 
     public void display() {
         for(int i = 0; i < this.size; i++) {
-            System.out.print(" |\t");
+            System.out.print("  |\t");
             for(int j = 0; j < this.size; j++) {
                 if(board.get(i).get(j).getCellState().equals(CellState.EMPTY)) {
-                    System.out.print(" |\t");
+                    System.out.print("  |\t");
                 }
                 else {
                     System.out.print(board.get(i).get(j).getPlayer().getSymbol()+ " |\t");

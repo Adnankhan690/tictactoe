@@ -15,7 +15,7 @@ public class ColumnWinningStrategy implements WinningStrategy {
 
         for(int j = 0; j < board.getSize(); j++) {
             Cell currentCell = board.getBoard().get(j).get(col);
-            if(!currentCell.getCellState().equals(CellState.EMPTY) ||
+            if(currentCell.getCellState().equals(CellState.EMPTY) ||
                     !currentCell.getPlayer().equals(currentPlayer)) {
                 return false;
             }

@@ -15,7 +15,7 @@ public class RowWinningStrategy implements  WinningStrategy {
 
         for(int i = 0; i < board.getSize(); i++) {
             Cell currentCell = board.getBoard().get(row).get(i);
-            if(!currentCell.getCellState().equals(CellState.EMPTY) ||
+            if(currentCell.getCellState().equals(CellState.EMPTY) ||
                     !currentCell.getPlayer().equals(currentPlayer)) {
                 return false;
             }

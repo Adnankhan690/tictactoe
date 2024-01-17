@@ -11,7 +11,7 @@ public class EasyBotPlayingStrategy implements BotPlayingStrategy {
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
                 if(board.getBoard().get(i).get(j).getCellState().equals(CellState.EMPTY)) {
-                    return new Cell(i,j);
+                    return board.getBoard().get(i).get(j);
                 }
             }
         }
