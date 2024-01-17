@@ -15,6 +15,6 @@ public abstract class Player {
     private int rank;
     private PlayerType playerType;
 
-    public abstract void nextMove();
+    public abstract void nextMove(Board board);
 
 }

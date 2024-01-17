@@ -1,4 +1,4 @@
-package botplaying;
+package strategies.botplaying;
 import models.Board;
 import models.Cell;
 import models.CellState;
