@@ -1,13 +1,9 @@
 package models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Setter
 @Getter
-
 public class Cell {
     private int row;
     private int col;
@@ -20,4 +16,12 @@ public class Cell {
         this.cellState = CellState.EMPTY;
     }
 
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "row=" + (row + 1) + // To show to the user the correct row,col according to him
+                ", col=" + (col + 1) +
+                ", cellState=" + cellState +
+                '}';
+    }
 }

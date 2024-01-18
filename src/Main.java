@@ -31,7 +31,7 @@ public class Main {
         List<Player> players = new ArrayList<>();
 
         for(int i = 0; i < n; i++) {
-            System.out.println("Please enter details of the player --> " +(i + 1));
+            System.out.println("Please enter details of the player: " +(i + 1));
             System.out.print("Name: ");
             String name = sc.next();
             System.out.print("Symbol: ");
@@ -66,10 +66,12 @@ public class Main {
 
         if(sc.next().equals("Y")) {
             GameController gc = new GameController(game);
-            gc. startGame();
+            gc.startGame();
         }
 
         System.out.println(" -Game Ended-");
-
+        //TODO ASK if the players want to replay the game.
+        //Using the list of moves that we have stored ot new List,
+        // also put the delay while replaying
     }
 }

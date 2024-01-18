@@ -3,6 +3,9 @@ package services;
 import models.*;
 import strategies.winning.WinningStrategy;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class GameServices  {
     private Game game;
 
@@ -23,6 +26,8 @@ public class GameServices  {
             Player currentPlayer = game.getPlayers().get(game.getNextPlayerIndex());
             System.out.printf("It's %s move...\n",currentPlayer.getName());
             Cell cell = currentPlayer.nextMove(game.getBoard());
+            //Adding the move in the lis-of-moves
+            game.getMoves().add(new Move(currentPlayer, cell));
             //To print the board to the user
             game.getBoard().display();
 
@@ -33,6 +38,10 @@ public class GameServices  {
                     return;
                 }
             }
+            //Making sure Bot does not have Undo-Feature
+            if(currentPlayer.getPlayerType().equals(PlayerType.HUMAN)) {
+                aksIfPlayerWantsToUndo();
+            }
             game.setNextPlayerIndex((game.getNextPlayerIndex() + 1) % game.getPlayers().size());
         }
 
@@ -40,6 +49,32 @@ public class GameServices  {
             game.setGameState(GameState.DRAW);
             System.out.println("No more cells to play, hence game is draw");
         }
+    }
+    public void aksIfPlayerWantsToUndo() {
+        System.out.println("Would you like to undo the last move ? (Y/N): ");
+        Scanner sc = new Scanner(System.in);
+        String response = sc.next();
+        if(response.equals("Y")) {
+            undoLastMove();
+            game.board.display(); //Also displaying the board after Undo-feature is applied
+        }
+    }
+
+    public void undoLastMove() {
+        //TODO PUT WAIT FUNCTION FOR THIS TO REMOVE LAST MOVE
+        System.out.println("Please wait removing the last move.....");
+        List<Move> move = game.getMoves();
+        //We will also update the cell
+        Cell cell = move.get(move.size() - 1).getCell();
+        //Printing the last removed move
+        System.out.println(move.get(move.size() - 1));
+
+        move.remove(move.get(move.size() - 1));
+        //Updating that cell as EMPTY again
+        cell.setCellState(CellState.EMPTY);
+        cell.setPlayer(null);
+        //Update the player index also by -1
+        game.setNextPlayerIndex(game.getNextPlayerIndex() - 1);
     }
 
     public boolean checkEmptySpace() {

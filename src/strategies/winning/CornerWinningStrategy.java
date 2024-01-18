@@ -6,7 +6,7 @@ import models.CellState;
 import models.Player;
 
 public class CornerWinningStrategy implements WinningStrategy{
-
+    //TODO THIS STRATEGY IS NOT WORKING CORRECTLY
     //Checking for Anti-Diagonals
     @Override
     public boolean checkWin(Cell cell, Board board) {

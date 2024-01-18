@@ -7,7 +7,6 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @SuperBuilder
-
 public abstract class Player {
     private String name;
     private int player_id;
@@ -16,5 +15,12 @@ public abstract class Player {
     private PlayerType playerType;
 
     public abstract Cell nextMove(Board board);
-
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", symbol=" + symbol +
+                ", playerType=" + playerType +
+                '}';
+    }
 }

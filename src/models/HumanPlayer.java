@@ -6,7 +6,6 @@ import lombok.experimental.SuperBuilder;
 import java.util.Scanner;
 
 @SuperBuilder
-
 public class HumanPlayer extends Player {
     private int age;
     private int rank;
@@ -22,8 +21,10 @@ public class HumanPlayer extends Player {
 
         System.out.println("Please enter the row:");
         int row = sc.nextInt();
+        row--; //To make the row and col start from 1(User count rows-col from 1)
         System.out.println("Please enter the col:");
         int col = sc.nextInt();
+        col--; //To make the row and col start from 1(User count rows-col from 1)
 
         //TODO: Add a custom exception
         if(!board.getBoard().get(row).get(col).getCellState().equals(CellState.EMPTY)) {
