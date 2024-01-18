@@ -1,8 +1,8 @@
 package services;
 
+import exceptions.InvalidCellException;
 import models.*;
 import strategies.winning.WinningStrategy;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,8 +24,16 @@ public class GameServices  {
     public void executeNextMoves() {
         while(checkEmptySpace()) {
             Player currentPlayer = game.getPlayers().get(game.getNextPlayerIndex());
-            System.out.printf("It's %s move...\n",currentPlayer.getName());
-            Cell cell = currentPlayer.nextMove(game.getBoard());
+            System.out.printf("It's [%s] move...\n",currentPlayer.getName());
+            Cell cell = null;
+            //Handling the exception thrown by the Human-Player
+            try {
+                cell = currentPlayer.nextMove(game.getBoard());
+            } catch (InvalidCellException e) {//TODO put delay after Incorrect cell
+                System.out.println("        xxx Incorrect cell xxx \n" +
+                        "Please re-check the cell you have entered!");
+                continue;
+            }
             //Adding the move in the lis-of-moves
             game.getMoves().add(new Move(currentPlayer, cell));
             //To print the board to the user

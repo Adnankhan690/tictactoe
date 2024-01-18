@@ -14,18 +14,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Tic-Tac-Toe Game!!");
+        System.out.println("------------- Welcome to the Tic-Tac-Toe Game -------------");
 
-
-        System.out.println("Let's start playing...");
+        //TODO PUT DELAY HERE ALSO and make the three dots appear one by one with delay
+        System.out.println("                   Game is Starting...");
+        //TODO Optimise this step by precondition checks
         System.out.println("How many players would be playing ?");
-
-
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        System.out.println("Enter the dimension of the Board");
+        System.out.println("Enter the dimension of the Board:");
         int dimension = sc.nextInt();
 
         List<Player> players = new ArrayList<>();
@@ -66,10 +65,11 @@ public class Main {
 
         if(sc.next().equals("Y")) {
             GameController gc = new GameController(game);
+            System.out.println("        Game is started");
             gc.startGame();
         }
 
-        System.out.println(" -Game Ended-");
+        System.out.println(" -GAME OVER-");
         //TODO ASK if the players want to replay the game.
         //Using the list of moves that we have stored ot new List,
         // also put the delay while replaying

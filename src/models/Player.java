@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.InvalidCellException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -14,7 +15,7 @@ public abstract class Player {
     private int rank;
     private PlayerType playerType;
 
-    public abstract Cell nextMove(Board board);
+    public abstract Cell nextMove(Board board) throws InvalidCellException;
     @Override
     public String toString() {
         return "Player{" +
