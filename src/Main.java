@@ -69,7 +69,7 @@ public class Main {
             gc.startGame();
         }
 
-        System.out.println(" -GAME OVER-");
+        System.out.println("        -GAME OVER-");
         //TODO ASK if the players want to replay the game.
         //Using the list of moves that we have stored ot new List,
         // also put the delay while replaying

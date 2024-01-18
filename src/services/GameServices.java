@@ -42,7 +42,7 @@ public class GameServices  {
             for(WinningStrategy winningStrategy : game.getWinningStrategies()) {
                 if(winningStrategy.checkWin(cell, game.getBoard())) {
                     game.setGameState(GameState.SUCCESS);
-                    System.out.printf("Player %s has won!!!", currentPlayer.getName());
+                    System.out.printf("         Player %s has won!!!", currentPlayer.getName());
                     return;
                 }
             }

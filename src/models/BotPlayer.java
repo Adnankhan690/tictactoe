@@ -1,10 +1,12 @@
 package models;
 
+import lombok.Getter;
 import strategies.botplaying.BotPlayingStrategy;
 import strategies.botplaying.EasyBotPlayingStrategy;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
+@Getter
 
 public class BotPlayer extends Player {
     private DifficultyLevel difficultyLevel;
@@ -12,8 +14,6 @@ public class BotPlayer extends Player {
 
     @Override
     public Cell nextMove(Board board) {
-        //TODO: Have a simple factory here based on difficulty level
-        botPlayingStrategy = new EasyBotPlayingStrategy();
         //Getting suggestion as to which cell 'BOT' can place a move
         Cell cell = botPlayingStrategy.suggestMove(board);
         //Fill the players detail
@@ -23,5 +23,4 @@ public class BotPlayer extends Player {
 
         return cell;
     }
-
 }
