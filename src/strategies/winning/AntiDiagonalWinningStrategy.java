@@ -5,29 +5,15 @@ import models.Cell;
 import models.CellState;
 import models.Player;
 
-public class CornerWinningStrategy implements WinningStrategy{
-    //TODO THIS STRATEGY IS NOT WORKING CORRECTLY
-    //Checking for Anti-Diagonals
+public class AntiDiagonalWinningStrategy implements  WinningStrategy{
     @Override
     public boolean checkWin(Cell cell, Board board) {
         Player currentPlayer = cell.getPlayer();
         int row = cell.getRow();
         int col = cell.getCol();
 
-        int i = 0, j = col - 1;
-        while(i < row && j >= 0) {
-            Cell currentCell = board.getBoard().get(i).get(j);
-            if(currentCell.getCellState().equals(CellState.EMPTY) ||
-                    !currentCell.getPlayer().equals(currentPlayer)) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-
-        //Checking for Diagonals
-        i = 0;
-        j = 0;
+        int i = 0;
+        int j = board.getSize() - 1;
         while(i < board.getSize()) {
             Cell currentCell = board.getBoard().get(i).get(j);
             if(currentCell.getCellState().equals(CellState.EMPTY) ||
@@ -35,7 +21,7 @@ public class CornerWinningStrategy implements WinningStrategy{
                 return false;
             }
             i++;
-            j++;
+            j--;
         }
         return true;
     }

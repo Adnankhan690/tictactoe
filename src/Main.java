@@ -3,8 +3,9 @@ import controllers.PlayerController;
 import models.DifficultyLevel;
 import models.Game;
 import models.Player;
+import strategies.winning.AntiDiagonalWinningStrategy;
 import strategies.winning.ColumnWinningStrategy;
-import strategies.winning.CornerWinningStrategy;
+import strategies.winning.DiagonalWinningStrategy;
 import strategies.winning.RowWinningStrategy;
 
 import java.util.ArrayList;
@@ -44,8 +45,10 @@ public class Main {
                 switch(level) {
                     case "E":
                         difficultyLevel = DifficultyLevel.EASY;
+                        break;
                     case "M":
                         difficultyLevel = DifficultyLevel.MEDIUM;
+                        break;
                     default:
                         difficultyLevel = DifficultyLevel.HARD;
                 }
@@ -59,7 +62,7 @@ public class Main {
         Game game = GameController.initiateGame(dimension,
                 players,
                 List.of(new RowWinningStrategy(), new ColumnWinningStrategy(),
-                       new CornerWinningStrategy()));
+                       new AntiDiagonalWinningStrategy(), new DiagonalWinningStrategy()));
 
         System.out.println("Are you ready to start the Game? (Y/N):");
 

@@ -39,6 +39,7 @@ public class GameServices  {
             //To print the board to the user
             game.getBoard().display();
 
+            //Checking if the player has won ?
             for(WinningStrategy winningStrategy : game.getWinningStrategies()) {
                 if(winningStrategy.checkWin(cell, game.getBoard())) {
                     game.setGameState(GameState.SUCCESS);
@@ -52,7 +53,7 @@ public class GameServices  {
             }
             game.setNextPlayerIndex((game.getNextPlayerIndex() + 1) % game.getPlayers().size());
         }
-
+        //Checking if the Game is Draw ?
         if(!game.getGameState().equals(GameState.SUCCESS)) {
             game.setGameState(GameState.DRAW);
             System.out.println("No more cells to play, hence game is draw");
