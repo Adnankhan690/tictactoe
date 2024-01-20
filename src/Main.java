@@ -39,7 +39,7 @@ public class Main {
             System.out.print("Is this player a BOT? (Y/N): ");
 
             if (sc.next().equals("Y")) {
-                System.out.println("What's the level of BOT (E/M/H): ");
+                System.out.println("What's the level of BOT (E/M): ");
                 String level = sc.next();
                 DifficultyLevel difficultyLevel;
                 switch(level) {

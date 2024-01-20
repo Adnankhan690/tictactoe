@@ -9,7 +9,9 @@ public class BotPlayingStrategyFactory {
             case EASY -> {
                  return easyStrategy;
             }
-            case MEDIUM -> new MediumBotPlayingStrategy();
+            case MEDIUM -> {
+                return new MediumBotPlayingStrategy();
+            }
             case HARD -> new HardBotPlayingStrategy();
         }
         return null;
