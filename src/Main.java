@@ -17,8 +17,17 @@ public class Main {
 
         System.out.println("------------- Welcome to the Tic-Tac-Toe Game -------------");
 
-        //TODO PUT DELAY HERE ALSO and make the three dots appear one by one with delay
-        System.out.println("                   Game is Starting...");
+        //Added delay to make game more realistic
+        System.out.print("                   Please wait Game is Loading");
+        for(int i = 0; i < 3; i++) {
+            System.out.print(".");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
+        }
+        System.out.println();
         //TODO Optimise this step by precondition checks
         System.out.println("How many players would be playing ?");
 

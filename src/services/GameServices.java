@@ -29,7 +29,13 @@ public class GameServices  {
             //Handling the exception thrown by the Human-Player
             try {
                 cell = currentPlayer.nextMove(game.getBoard());
-            } catch (InvalidCellException e) {//TODO put delay after Incorrect cell
+            } catch (InvalidCellException e) {
+                //Added delay to make game look more realistic
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException t) {
+
+                }
                 System.out.println("        xxx Incorrect cell xxx \n" +
                         "Please re-check the cell you have entered!");
                 continue;
@@ -63,15 +69,22 @@ public class GameServices  {
         System.out.println("Would you like to undo the last move ? (Y/N): ");
         Scanner sc = new Scanner(System.in);
         String response = sc.next();
+        //Added wait to make the game realistic
+        System.out.print("        Undoing Your Last Move...");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+
+        }
         if(response.equals("Y")) {
+
             undoLastMove();
             game.board.display(); //Also displaying the board after Undo-feature is applied
         }
     }
 
     public void undoLastMove() {
-        //TODO PUT WAIT FUNCTION FOR THIS TO REMOVE LAST MOVE
-        System.out.println("Please wait removing the last move.....");
+
         List<Move> move = game.getMoves();
         //We will also update the cell
         Cell cell = move.get(move.size() - 1).getCell();
