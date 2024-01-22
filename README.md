@@ -20,7 +20,7 @@ Run the game:
 * Enter details of the player:
      Name: 
      Symbol:
-     Is this player a BOT? (Y/N):(if Y then What's the level of BOT (E/M): ?) [E -> Easy, M -> Medium]
+* Is this player a BOT? (Y/N): (If Y then What's the level of BOT (E/M): ?) [E -> Easy, M -> Medium]
 * Are you ready to start the Game? (Y/N): (Enter 'Y' and enjoy the GAME)
 
 4. Features:
@@ -31,9 +31,9 @@ Run the game:
 
 5. File Structure(MVC File Structure):
 * Models
-   -Controller
-   -Service(Actual logic implementation)
-   -Main(The main flow of the game)
-   -Strategies(Winning and Playing)
+* Controller
+* Service(Actual logic implementation)
+* Main(The main flow of the game)
+* Strategies(Winning and Playing)
 
 6. Open for Contribution
