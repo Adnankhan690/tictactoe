@@ -50,6 +50,7 @@ public class GameServices  {
                 if(winningStrategy.checkWin(cell, game.getBoard())) {
                     game.setGameState(GameState.SUCCESS);
                     System.out.printf("         Player %s has won!!!", currentPlayer.getName());
+                    System.out.println();
                     return;
                 }
             }
@@ -63,6 +64,7 @@ public class GameServices  {
         if(!game.getGameState().equals(GameState.SUCCESS)) {
             game.setGameState(GameState.DRAW);
             System.out.println("No more cells to play, hence game is draw");
+            System.out.println();
         }
     }
     public void aksIfPlayerWantsToUndo() {
@@ -70,14 +72,14 @@ public class GameServices  {
         Scanner sc = new Scanner(System.in);
         String response = sc.next();
         //Added wait to make the game realistic
-        System.out.print("        Undoing Your Last Move...");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
 
-        }
         if(response.equals("Y")) {
+            System.out.print("        Undoing Your Last Move...");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
 
+            }
             undoLastMove();
             game.board.display(); //Also displaying the board after Undo-feature is applied
         }

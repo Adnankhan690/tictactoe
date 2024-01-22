@@ -1,19 +1,20 @@
 import controllers.GameController;
 import controllers.PlayerController;
-import models.DifficultyLevel;
-import models.Game;
-import models.Player;
+import models.*;
 import strategies.winning.AntiDiagonalWinningStrategy;
 import strategies.winning.ColumnWinningStrategy;
 import strategies.winning.DiagonalWinningStrategy;
 import strategies.winning.RowWinningStrategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         System.out.println("------------- Welcome to the Tic-Tac-Toe Game -------------");
 
@@ -21,11 +22,7 @@ public class Main {
         System.out.print("                   Please wait Game is Loading");
         for(int i = 0; i < 3; i++) {
             System.out.print(".");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-            }
+            Thread.sleep(1000);
         }
         System.out.println();
         //TODO Optimise this step by precondition checks
@@ -81,9 +78,54 @@ public class Main {
             gc.startGame();
         }
 
-        System.out.println("        -GAME OVER-");
-        //TODO ASK if the players want to replay the game.
-        //Using the list of moves that we have stored ot new List,
-        // also put the delay while replaying
+        System.out.println("            -GAME OVER-");
+
+        System.out.println("Do you like to Replay the Game ? (Y/N)");
+
+        if(sc.next().equals("Y")) {
+            int size = game.board.getSize();
+            List<Move> moves = game.getMoves();
+            //Creating to print this matrix to user while Replaying
+            char[][] matrix = new char[size][size];
+            //To fill the matrix with '-' values
+            fill(matrix);
+
+            for(int i = 0; i < moves.size(); i++) {
+
+                    Move move = game.getMoves().get(i);
+                    char symbol = move.getPlayer().getSymbol();
+                    int r = move.getCell().getRow();
+                    int c = move.getCell().getCol();
+                    matrix[r][c] = symbol;
+                System.out.printf("Player %s's move ",move.getPlayer().getName());
+                System.out.println(": "+"["+r+','+c+']');
+                Thread.sleep(1500);
+                print(matrix);
+                System.out.println();
+
+            }
+            System.out.println();
+        }
+    }
+    public static void print(char[][] matrix) {
+        for(int i = 0; i < matrix.length; i++) {
+            System.out.print("  |\t");
+            for(int j = 0; j < matrix[0].length; j++) {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+
+                }
+                System.out.print(matrix[i][j]+" |\t");
+            }
+            System.out.println();
+        }
+    }
+    public static void fill(char[][] matrix) {
+        for(int i = 0; i < matrix.length; i++) {
+            for(int j = 0; j < matrix[0].length; j++) {
+                matrix[i][j] = '-';
+            }
+        }
     }
 }
